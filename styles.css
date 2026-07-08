@@ -1,0 +1,207 @@
+/* ---- Layout / row ---- */
+/* A lone calendar-heatmap block fills the note's width. A block with
+   multiple `trackers:` entries renders sibling .cht-card divs inside
+   this same element, laid out in a row. */
+
+.block-language-calendar-heatmap {
+	display: block;
+	width: 100%;
+	box-sizing: border-box;
+	margin: 4px 0;
+}
+
+.cht-row {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	gap: 12px;
+}
+
+.cht-row > .cht-card {
+	width: auto;
+	flex: 1 1 260px;
+	min-width: 0;
+}
+
+/* ---- Card shell + design tokens ---- */
+
+.cht-card {
+	--cht-cell-size: 20px;
+	/* Grid cell gap: keep in sync with CELL_GAP in main.js — no shared
+	   source of truth between the two files. */
+	--cht-gap: 3px;
+	--cht-radius-lg: 8px;
+	--cht-radius-sm: 4px;
+	--cht-font-xs: 10px;
+	--cht-font-sm: 11px;
+	--cht-font-base: 12px;
+	--cht-font-md: 13px;
+	--cht-space-xs: 6px;
+	--cht-space-sm: 8px;
+	--cht-color-positive: var(--color-green, #4ade80);
+	--cht-color-negative: var(--color-red, #f87171);
+
+	display: flex;
+	flex-direction: column;
+	gap: var(--cht-space-sm);
+	width: 100%;
+	box-sizing: border-box;
+	padding: 10px 14px 12px;
+	border: 1px solid var(--background-modifier-border);
+	border-radius: var(--cht-radius-lg);
+	background: var(--background-secondary);
+	font-size: var(--cht-font-base);
+	color: var(--text-normal);
+}
+
+/* ---- Header ---- */
+
+.cht-header {
+	display: flex;
+	align-items: center;
+	gap: var(--cht-space-xs);
+	padding-bottom: var(--cht-space-sm);
+	border-bottom: 1px solid var(--background-modifier-border);
+	font-weight: 600;
+	color: var(--text-accent);
+}
+
+.cht-icon {
+	display: inline-flex;
+	width: 14px;
+	height: 14px;
+}
+
+.cht-icon svg {
+	width: 14px;
+	height: 14px;
+}
+
+.cht-title {
+	font-size: var(--cht-font-md);
+}
+
+/* ---- Grid & cells ---- */
+
+.cht-grid {
+	display: grid;
+	grid-auto-rows: var(--cht-cell-size);
+	row-gap: var(--cht-gap);
+	column-gap: var(--cht-gap);
+	align-items: center;
+	justify-items: center;
+}
+
+.cht-year-label,
+.cht-month-label {
+	font-size: var(--cht-font-xs);
+	color: var(--text-faint);
+	justify-self: start;
+	align-self: end;
+	padding-bottom: 2px;
+}
+
+.cht-year-label {
+	padding-right: var(--cht-space-xs);
+}
+
+.cht-weekday-label {
+	font-size: var(--cht-font-xs);
+	color: var(--text-faint);
+	justify-self: end;
+	padding-right: var(--cht-space-xs);
+	white-space: nowrap;
+}
+
+.cht-cell {
+	width: var(--cht-cell-size);
+	height: var(--cht-cell-size);
+	border-radius: var(--cht-radius-sm);
+	background: var(--background-modifier-border);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 9px;
+	font-weight: 600;
+	color: rgba(0, 0, 0, 0.65);
+	line-height: 1;
+}
+
+.cht-cell--empty {
+	background: var(--background-primary);
+	opacity: 0.5;
+}
+
+.cht-cell--today {
+	box-shadow: 0 0 0 1.5px var(--text-accent);
+}
+
+/* ---- Stats ---- */
+
+.cht-stats {
+	font-size: var(--cht-font-md);
+}
+
+.cht-stats-value {
+	font-weight: 700;
+	color: var(--text-normal);
+}
+
+.cht-stats-sep {
+	color: var(--text-faint);
+}
+
+.cht-stats-pct--up {
+	color: var(--cht-color-positive);
+	font-weight: 600;
+}
+
+.cht-stats-pct--down {
+	color: var(--cht-color-negative);
+	font-weight: 600;
+}
+
+/* ---- Input row ---- */
+
+.cht-input-row {
+	display: flex;
+	align-items: center;
+	gap: var(--cht-space-xs);
+	padding-top: 4px;
+	border-top: 1px solid var(--background-modifier-border);
+}
+
+.cht-input-label {
+	font-size: var(--cht-font-sm);
+	color: var(--text-faint);
+}
+
+.cht-input {
+	width: 70px;
+	font-size: var(--cht-font-base);
+	padding: 2px 4px;
+	background: var(--background-primary);
+	border: 1px solid var(--background-modifier-border);
+	border-radius: var(--cht-radius-sm);
+	color: var(--text-normal);
+}
+
+.cht-input--invalid {
+	border-color: var(--cht-color-negative);
+	outline: 1px solid var(--cht-color-negative);
+}
+
+.cht-input-unit {
+	font-size: var(--cht-font-sm);
+	color: var(--text-faint);
+}
+
+/* ---- Error state ---- */
+/* Rendered standalone (outside .cht-card) when code-block parsing fails,
+   so it can't see the tokens above — kept as plain literals. */
+
+.cht-error {
+	color: var(--text-error);
+	font-size: 12px;
+	padding: 8px;
+}
