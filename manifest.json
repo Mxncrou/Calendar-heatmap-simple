@@ -1,0 +1,9 @@
+{
+	"id": "calendar-heatmap-tracker",
+	"name": "Calendar Heatmap Tracker",
+	"version": "1.0.0",
+	"minAppVersion": "1.4.0",
+	"description": "Inline GitHub-style calendar heatmap trackers rendered directly in your notes, with a quick input field to log today's value. Data is stored in a local JSON file.",
+	"author": "Claude Code",
+	"isDesktopOnly": false
+}
