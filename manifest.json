@@ -1,7 +1,7 @@
 {
 	"id": "calendar-heatmap-tracker",
 	"name": "Calendar Heatmap Tracker",
-	"version": "0.0.1",
+	"version": "1.0.0",
 	"minAppVersion": "1.4.0",
 	"description": "My calendar heatmap",
 	"author": "Maxence Cerou",
